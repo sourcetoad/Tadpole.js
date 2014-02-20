@@ -2,18 +2,20 @@
  * Created by chriswillingham on 2/6/14.
  */
 App.views.Index = BaseView.extend({
-    template: null,
-    el: '#main',
-    name: 'hello world',
     initialize: function(){
+        console.log('initializing');
         this.template = App.templates.index;
+        this.scope = {
+            i: 0
+        }
     },
+    
     events: {
-        
+        'click #test': 'clicked'
     },
-    render: function(){
-        console.log("RENDERING INDEX");
-        var html = this.template(this);
-        this.$el.html(html);
+    clicked: function(e){
+        this.scope.i++;
+        console.log('Button clicked:', this.scope.i, 'times');
+        this.render();
     }
 });

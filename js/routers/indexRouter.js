@@ -11,7 +11,6 @@ App.routers.index = Backbone.Router.extend({
     },
     index: function(){
         console.log('INDEX loading');
-        var view = new App.views.Index();
-        view.render();
+        App.renderView(new App.views.Index());
     }
 });

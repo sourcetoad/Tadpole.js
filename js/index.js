@@ -9,6 +9,7 @@ var App = {
     views: {},
     routers: {},
     runningRouters: {},
+    currentView: null,
     templates: [
         "index"
     ],
@@ -21,10 +22,9 @@ var App = {
             },
             function(cb){
                 self.loadRoutes();
+                //new App.routers.index();
                 console.log("APP INIT");
-                var view = new self.views.Index();
-                view.render();
-                Backbone.history.start({pushState: true});
+                console.log(Backbone.history.start());
             }
         ]);
     },
@@ -49,8 +49,14 @@ var App = {
             cb(null, templates);
         })
     },
-    render: function(html){
-        
+    renderView: function(view){
+        if(this.currentView != null){
+            console.log('leaving view');
+            this.currentView.leave();
+            this.currentView = null;
+        }
+        this.currentView = view;
+        $('#main').html(this.currentView.render().el);
     },
     loadRoutes: function(){
         var self = this;
