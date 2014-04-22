@@ -1,0 +1,4 @@
+<h1>TEST {{name}}</h1>
+<button id="test">Click Me</button>
+<p>this buttons has been clicked <b>{{i}}</b> times</p>
+<a href="#test">Test Link</a>

@@ -1,24 +1,28 @@
 /**
- * Created by chriswillingham on 2/6/14.
+ *= require_self
+ *= require_tree base
+ *= require_tree models
+ *= require_tree views
+ *= require_tree routers
  */
 
 var App = {
     models: {},
     collections: {},
     data: {},
-    views: {},
+    views: {}, 
     routers: {},
     runningRouters: {},
     currentView: null,
     templates: [
         "index"
     ],
-    currentView: null,
+    currentView: null, 
     init: function(){
         var self = this;
         async.series([
             function(cb){
-                self.loadTemplates(cb);
+                self.loadTemplates(cb); 
             },
             function(cb){
                 self.loadRoutes();
