@@ -17,7 +17,6 @@ var App = {
     templates: [
         "index"
     ],
-    currentView: null, 
     init: function(){
         var self = this;
         async.series([

@@ -30,7 +30,7 @@ var BaseView = Backbone.View.extend({
     },
     unbindFromAll: function() {
         _.each(this.bindings, function(binding) {
-          binding.source.unbind(binding.event, binding.callback);
+            binding.source.unbind(binding.event, binding.callback);
         });
         this.bindings = []
     },

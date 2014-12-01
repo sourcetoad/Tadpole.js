@@ -7,9 +7,9 @@ module.exports = function(grunt) {
             files: ['src/**/*.js', 'src/**/*.hbr'],
             tasks: ['directives'],
             options: {
-              spawn: false,
-            },
-          },
+              spawn: false
+            }
+          }
         },
         uglify: {
             options: {
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
         directives: {
             options: {
 //                banner: "(function( window, undefined ){ \n ",
-                stripBanners: false,
+                stripBanners: false
 //                footer: "}( window )); //eof"
             },
             files: {

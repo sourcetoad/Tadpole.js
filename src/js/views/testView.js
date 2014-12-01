@@ -5,7 +5,7 @@ App.views.Test = BaseView.extend({
     },
     events: {
 //        'click #test': 'clicked'
-    },
+    }
 //    clicked: function(e){
 //        this.scope.i++;
 //        console.log('Button clicked:', this.scope.i, 'times');
