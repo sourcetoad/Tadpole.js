@@ -10,7 +10,7 @@ var App = {
     models: {},
     collections: {},
     data: {},
-    views: {}, 
+    views: {},
     routers: {},
     runningRouters: {},
     currentView: null,
@@ -21,7 +21,7 @@ var App = {
         var self = this;
         async.series([
             function(cb){
-                self.loadTemplates(cb); 
+                self.loadTemplates(cb);
             },
             function(cb){
                 self.loadRoutes();
@@ -39,7 +39,7 @@ var App = {
         for(var i in templateFiles){
             var file = templateFiles[i];
             templateLoaders[file] = function(cb){
-                $.get('js/templates/'+file+'.hbr', function(data){
+                $.get('js/templates/'+file+'.hbs', function(data){
                     self.templates[file] = Handlebars.compile(data);
                     console.log(data);
                     cb(null, Handlebars.compile(data));
