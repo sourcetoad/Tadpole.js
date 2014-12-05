@@ -1,0 +1,33 @@
+{
+  "name": "backbone-starter",
+  "version": "0.0.1",
+  "homepage": "https://github.com/sourcetoad/backbone-starter",
+  "authors": [
+    "Sourcetoad"
+  ],
+  "description": "backbonejs mvc-style starter kit",
+  "main": "src/index.html",
+  "keywords": [
+    "backbone.js",
+    "backbone",
+    "grunt",
+    "mvc",
+    "Sourcetoad",
+    "underscore",
+    "jquery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "async": "~0.9.0",
+    "backbone": "~1.1.2",
+    "handlebars": "~2.0.0",
+    "jquery": "~2.1.1"
+  }
+}
