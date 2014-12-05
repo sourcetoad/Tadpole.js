@@ -4,7 +4,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         watch: {
           scripts: {
-            files: ['src/**/*.js', 'src/**/*.hbr'],
+            files: ['src/**/*.js', 'src/**/*.hbs'],
             tasks: ['directives'],
             options: {
               spawn: false

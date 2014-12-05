@@ -37,14 +37,20 @@ var App = {
         this.templates = {};
         var templateLoaders = {};
         for(var i in templateFiles){
-            var file = templateFiles[i];
-            templateLoaders[file] = function(cb){
-                $.get('js/templates/'+file+'.hbs', function(data){
-                    self.templates[file] = Handlebars.compile(data);
-                    console.log(data);
-                    cb(null, Handlebars.compile(data));
-                });
-            }
+            (function(){
+                var file = templateFiles[i];
+                console.log(file);
+                templateLoaders[file] = function(cb){
+                    var me = this;
+                    console.log('FILE IS',file);
+                    $.get('js/templates/'+file+'.hbs', function(data){
+                        self.templates[file] = Handlebars.compile(data);
+                        //console.log(data);
+                        cb(null, Handlebars.compile(data));
+                    });
+                };
+                templateLoaders[file].file = file;
+            })();
         }
         async.parallel(templateLoaders, function(err, data){
             console.log('templates finished loading: ', data);
