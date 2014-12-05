@@ -1,4 +1,4 @@
-dist
-build
+#dist
+#build
 .idea
 node_modules
