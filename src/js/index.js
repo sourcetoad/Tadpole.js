@@ -64,6 +64,7 @@ var App = {
             this.currentView.leave();
             this.currentView = null;
         }
+
         this.currentView = view;
         $('#main').html(this.currentView.render().el);
     },
