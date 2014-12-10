@@ -1,2 +1,2 @@
-//=require lib/libs.js
+//=require libs.js
 //=require index.js

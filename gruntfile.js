@@ -63,7 +63,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-bower-task');
     
-    grunt.registerTask('default', ['directives', 'copy:templates']);
+    grunt.registerTask('default', ['bower', 'directives', 'copy:templates']);
     grunt.registerTask('production', ['default', 'uglify', 'copy:production']);
 //    grunt.registerTask('watch', ['default', 'watch']);
 };
