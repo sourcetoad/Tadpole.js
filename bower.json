@@ -29,5 +29,16 @@
     "backbone": "~1.1.2",
     "handlebars": "~2.0.0",
     "jquery": "~2.1.1"
+  },
+  "exportsOverride": {
+    "bootstrap-*": {
+      "js": "**/*.js",
+      "css": "**/*.css"
+    },
+
+    "*": {
+      "js": "**/*.js",
+      "css": "**/*.css"
+    }
   }
 }

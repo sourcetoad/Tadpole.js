@@ -44,12 +44,24 @@ module.exports = function(grunt) {
                     {expand: true, flatten:true,filter: 'isFile', dest: 'dist/js/templates/', src: 'build/js/templates/**'}
                 ]
             }
+        },
+        bower: {
+            install: {
+                options: {
+                    targetDir: 'src/js/lib',
+                    layout: 'byComponent',
+                    cleanTargetDir: true,
+                    cleanBowerDir: false
+                }
+                //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
+            }
         }
     });
     grunt.loadNpmTasks('grunt-sprockets-directives');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    //grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-bower-task');
     
     grunt.registerTask('default', ['directives', 'copy:templates']);
     grunt.registerTask('production', ['default', 'uglify', 'copy:production']);
