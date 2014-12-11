@@ -1,3 +1,5 @@
+
+
 var gulp = require("gulp");
 
 // Include Plugins
@@ -6,16 +8,39 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var include = require('gulp-include');
 var htmlreplace = require('gulp-html-replace');
+var webserver = require('gulp-webserver');
 
+
+
+// ***********************
+// * Watch
+// ***********************
 
 // JSHint
-gulp.task('lint', function() {
+gulp.task('jshint', function() {
     return gulp.src('src/js/*/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
 
+// Live Reload HTTP Server
+gulp.task('start', function() {
+    gulp.src('')
+        .pipe(webserver({
+            livereload: true,
+            directoryListing: true,
+            open: true
+        }));
+});
+
+
+
+
+
+// ***********************
+// * Distribute
+// ***********************
 
 // Minify JS
 gulp.task('minify', function() {
@@ -53,5 +78,23 @@ gulp.task('replaceHTML', function() {
 
 
 
-// Dist Task
-gulp.task('dist', ['minify', 'copyTemplates','includeLibs', 'replaceHTML']);
+
+
+
+// ***********************
+// * Tasks
+// ***********************
+
+// Watch Task
+gulp.task('watch', ['jshint', 'start']);
+
+// Distribute Task
+gulp.task('distribute', ['minify', 'copyTemplates','includeLibs', 'replaceHTML']);
+
+
+
+
+
+
+
+
