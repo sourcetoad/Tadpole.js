@@ -7,7 +7,7 @@ App.views.Index = BaseView.extend({
         this.template = App.templates.index;
         this.scope = {
             i: 0
-        }
+        };
     },
     
     events: {

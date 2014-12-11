@@ -1,5 +1,5 @@
-//= require lib/async/js/async.js
-//= require lib/jquery/js/jquery.js
-//= require lib/underscore/js/underscore.js
-//= require lib/backbone/js/backbone.js
-//= require lib/handlebars/js/handlebars.js
+//= require ../../bower_components/async/lib/async.js
+//= require ../../bower_components/jquery/dist/jquery.js
+//= require ../../bower_components/underscore/underscore.js
+//= require ../../bower_components/backbone/backbone.js
+//= require ../../bower_components/handlebars/handlebars.js
