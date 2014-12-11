@@ -1,5 +1,3 @@
-
-
 var gulp = require("gulp");
 
 // Include Plugins
@@ -9,6 +7,13 @@ var uglify = require('gulp-uglify');
 var include = require('gulp-include');
 var htmlreplace = require('gulp-html-replace');
 var webserver = require('gulp-webserver');
+var taskListing = require('gulp-task-listing');
+
+
+
+gulp.task('install', function(){
+    console.log("testing");
+});
 
 
 
@@ -18,14 +23,14 @@ var webserver = require('gulp-webserver');
 
 // JSHint
 gulp.task('jshint', function() {
-    return gulp.src('src/js/*/*.js')
+    return gulp.src('app/js/*/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
 
 // Live Reload HTTP Server
-gulp.task('start', function() {
+gulp.task('server', function() {
     gulp.src('')
         .pipe(webserver({
             livereload: true,
@@ -37,14 +42,13 @@ gulp.task('start', function() {
 
 
 
-
 // ***********************
 // * Distribute
 // ***********************
 
 // Minify JS
 gulp.task('minify', function() {
-    return gulp.src(['src/js/app.js', 'src/js/index.js', 'src/js/base/*.js', 'src/js/routers/*.js', 'src/js/views/*.js'])
+    return gulp.src(['app/js/app.js', 'app/js/index.js', 'app/js/base/*.js', 'app/js/routers/*.js', 'app/js/views/*.js'])
         .pipe(concat('app.js'))
         .pipe(gulp.dest('dist/js'))
         .pipe(uglify())
@@ -52,24 +56,24 @@ gulp.task('minify', function() {
 });
 
 
-// Copy Templates
+// Copy Templates into dist
 gulp.task('copyTemplates', function() {
-    gulp.src('src/js/templates/*.hbs')
-        .pipe(gulp.dest('dist/js/templates/'));
+    gulp.src('app/templates/*.hbs')
+        .pipe(gulp.dest('dist/templates/'));
 });
 
 
-// Include files from libs.js into dist
+// Include files from libs.js in dist
 gulp.task("includeLibs", function() {
-    gulp.src('src/js/libs.js')
+    gulp.src('app/js/libs.js')
         .pipe( include() )
         .pipe( gulp.dest("dist/js") )
 });
 
 
-// Index.html
+// Replace JS index.html file includes with minified versions
 gulp.task('replaceHTML', function() {
-    gulp.src('src/index.html')
+    gulp.src('app/index.html')
         .pipe(htmlreplace({
             'js': ['js/libs.js', 'js/app.js']
         }))
@@ -80,13 +84,15 @@ gulp.task('replaceHTML', function() {
 
 
 
-
 // ***********************
 // * Tasks
 // ***********************
 
+// Default (help) Task
+gulp.task('default', taskListing);
+
 // Watch Task
-gulp.task('watch', ['jshint', 'start']);
+gulp.task('start', ['jshint', 'server']);
 
 // Distribute Task
 gulp.task('distribute', ['minify', 'copyTemplates','includeLibs', 'replaceHTML']);
