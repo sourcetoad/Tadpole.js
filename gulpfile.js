@@ -5,6 +5,7 @@ var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var include = require('gulp-include');
+var htmlreplace = require('gulp-html-replace');
 
 
 // JSHint
@@ -16,7 +17,7 @@ gulp.task('lint', function() {
 
 
 
-// Concatenate & Minify JS
+// Minify JS
 gulp.task('minify', function() {
     return gulp.src(['src/js/app.js', 'src/js/index.js', 'src/js/base/*.js', 'src/js/routers/*.js', 'src/js/views/*.js'])
         .pipe(concat('app.js'))
@@ -41,13 +42,16 @@ gulp.task("includeLibs", function() {
 });
 
 
-// Copy Index
-//gulp.task('copyIndex', function() {
-//    gulp.src('src/index.html')
-//        .pipe(gulp.dest('dist'));
-//});
+// Index.html
+gulp.task('replaceHTML', function() {
+    gulp.src('src/index.html')
+        .pipe(htmlreplace({
+            'js': ['js/libs.js', 'js/app.js']
+        }))
+        .pipe(gulp.dest('dist/'));
+});
 
 
 
 // Dist Task
-gulp.task('dist', ['minify', 'copyTemplates','includeLibs']);
+gulp.task('dist', ['minify', 'copyTemplates','includeLibs', 'replaceHTML']);
