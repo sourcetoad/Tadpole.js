@@ -1,4 +1,4 @@
-var gulp = require("gulp");
+var gulp = require('gulp');
 
 // Include Plugins
 var jshint = require('gulp-jshint');
@@ -8,6 +8,11 @@ var include = require('gulp-include');
 var htmlreplace = require('gulp-html-replace');
 var taskListing = require('gulp-task-listing');
 var connect = require('gulp-connect');
+
+var fs = require('fs');
+
+var args   = require('yargs').argv;
+//var gulpif = require('gulp-if');
 
 
 // Http server task
@@ -20,9 +25,38 @@ gulp.task('server', function() {
 });
 
 
-gulp.task('install', function(){
-    console.log("testing");
+
+
+// ***********************
+// * Generators
+// ***********************
+
+// Get CLI key
+function getArg(key) {
+    var index = process.argv.indexOf(key);
+    var next = process.argv[index + 1];
+    return (index < 0) ? null : (!next || next[0] === "-") ? true : next;
+}
+
+// Create View
+function createView(name) {
+    console.log("Creating view called " + name + "...");
+}
+
+
+// Generate Task
+gulp.task("g", function(){
+    var isView = getArg("--view");
+
+    if (isView != null) {
+        createView(getArg("--view"));
+    }
 });
+
+
+
+
+
 
 
 

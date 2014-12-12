@@ -1,95 +1,97 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/Users/chriswillingham/.nvm/v0.11.14/bin/node',
-1 verbose cli   '/Users/chriswillingham/.nvm/v0.11.14/bin/npm',
+1 verbose cli [ '/Users/sterling/.nvm/v0.11.14/bin/node',
+1 verbose cli   '/Users/sterling/.nvm/v0.11.14/bin/npm',
 1 verbose cli   'install',
-1 verbose cli   '-g',
-1 verbose cli   'grunt-cls' ]
+1 verbose cli   'gulp-yargs' ]
 2 info using npm@2.0.0
 3 info using node@v0.11.14
-4 verbose cache add [ 'grunt-cls', null ]
-5 verbose cache add spec="grunt-cls" args=["grunt-cls",null]
-6 verbose parsed spec { raw: 'grunt-cls',
-6 verbose parsed spec   scope: null,
-6 verbose parsed spec   name: 'grunt-cls',
-6 verbose parsed spec   rawSpec: '',
-6 verbose parsed spec   spec: '*',
-6 verbose parsed spec   type: 'range' }
-7 verbose parsed spec { raw: 'grunt-cls',
-7 verbose parsed spec   scope: null,
-7 verbose parsed spec   name: 'grunt-cls',
-7 verbose parsed spec   rawSpec: '',
-7 verbose parsed spec   spec: '*',
-7 verbose parsed spec   type: 'range' }
-8 verbose addNamed [ 'grunt-cls', '*' ]
-9 verbose addNamed [ null, '*' ]
-10 silly lockFile 9d1a768f-grunt-cls grunt-cls@*
-11 verbose lock grunt-cls@* /Users/chriswillingham/.npm/9d1a768f-grunt-cls.lock
-12 silly addNameRange { name: 'grunt-cls', range: '*', hasData: false }
-13 verbose mapToRegistry name grunt-cls
-14 verbose mapToRegistry uri https://registry.npmjs.org/grunt-cls
-15 verbose request on initialization, where is /grunt-cls
-16 verbose request after pass 1, where is /grunt-cls
-17 verbose request url raw /grunt-cls
-18 verbose request resolving registry [ 'https://registry.npmjs.org/', './grunt-cls' ]
-19 verbose request after pass 2, where is https://registry.npmjs.org/grunt-cls
-20 verbose request no auth needed
-21 info attempt registry request try #1 at 15:17:20
-22 verbose request id 2d3fdbe5b1dfdb7c
-23 http request GET https://registry.npmjs.org/grunt-cls
-24 http 404 https://registry.npmjs.org/grunt-cls
-25 verbose headers { date: 'Fri, 05 Dec 2014 20:17:20 GMT',
-25 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-25 verbose headers   'content-type': 'application/json',
-25 verbose headers   'cache-control': 'max-age=0',
-25 verbose headers   'content-length': '52',
-25 verbose headers   'accept-ranges': 'bytes',
-25 verbose headers   via: '1.1 varnish',
-25 verbose headers   age: '0',
-25 verbose headers   'x-served-by': 'cache-jfk1026-JFK',
-25 verbose headers   'x-cache': 'MISS',
-25 verbose headers   'x-cache-hits': '0',
-25 verbose headers   'x-timer': 'S1417810640.225649,VS0,VE75',
-25 verbose headers   connection: 'close' }
-26 silly registry.get cb [ 404,
-26 silly registry.get   { date: 'Fri, 05 Dec 2014 20:17:20 GMT',
-26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-26 silly registry.get     'content-type': 'application/json',
-26 silly registry.get     'cache-control': 'max-age=0',
-26 silly registry.get     'content-length': '52',
-26 silly registry.get     'accept-ranges': 'bytes',
-26 silly registry.get     via: '1.1 varnish',
-26 silly registry.get     age: '0',
-26 silly registry.get     'x-served-by': 'cache-jfk1026-JFK',
-26 silly registry.get     'x-cache': 'MISS',
-26 silly registry.get     'x-cache-hits': '0',
-26 silly registry.get     'x-timer': 'S1417810640.225649,VS0,VE75',
-26 silly registry.get     connection: 'close' } ]
-27 silly lockFile 9d1a768f-grunt-cls grunt-cls@*
-28 silly lockFile 9d1a768f-grunt-cls grunt-cls@*
-29 verbose stack Error: 404 Not Found: grunt-cls
-29 verbose stack     at RegClient.<anonymous> (/Users/chriswillingham/.nvm/v0.11.14/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:259:14)
-29 verbose stack     at Request._callback (/Users/chriswillingham/.nvm/v0.11.14/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:198:65)
-29 verbose stack     at Request.self.callback (/Users/chriswillingham/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:236:22)
-29 verbose stack     at Request.emit (events.js:110:17)
-29 verbose stack     at Request.<anonymous> (/Users/chriswillingham/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:1142:14)
-29 verbose stack     at Request.emit (events.js:129:20)
-29 verbose stack     at IncomingMessage.<anonymous> (/Users/chriswillingham/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:1096:12)
-29 verbose stack     at IncomingMessage.emit (events.js:129:20)
-29 verbose stack     at _stream_readable.js:907:16
-29 verbose stack     at process._tickCallback (node.js:372:11)
-30 verbose statusCode 404
-31 verbose pkgid grunt-cls
-32 verbose cwd /Users/chriswillingham/dev/web/backbone-starter
-33 error Darwin 14.0.0
-34 error argv "/Users/chriswillingham/.nvm/v0.11.14/bin/node" "/Users/chriswillingham/.nvm/v0.11.14/bin/npm" "install" "-g" "grunt-cls"
-35 error node v0.11.14
-36 error npm  v2.0.0
-37 error code E404
-38 error 404 Not Found: grunt-cls
-38 error 404
-38 error 404 'grunt-cls' is not in the npm registry.
-38 error 404 You should bug the author to publish it (or use the name yourself!)
-38 error 404
-38 error 404 Note that you can also install from a
-38 error 404 tarball, folder, http url, or git url.
-39 verbose exit [ 1, true ]
+4 warn package.json backbone-starter@0.0.01 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'gulp-yargs', null ]
+7 verbose cache add spec="gulp-yargs" args=["gulp-yargs",null]
+8 verbose parsed spec { raw: 'gulp-yargs',
+8 verbose parsed spec   scope: null,
+8 verbose parsed spec   name: 'gulp-yargs',
+8 verbose parsed spec   rawSpec: '',
+8 verbose parsed spec   spec: '*',
+8 verbose parsed spec   type: 'range' }
+9 verbose parsed spec { raw: 'gulp-yargs',
+9 verbose parsed spec   scope: null,
+9 verbose parsed spec   name: 'gulp-yargs',
+9 verbose parsed spec   rawSpec: '',
+9 verbose parsed spec   spec: '*',
+9 verbose parsed spec   type: 'range' }
+10 verbose addNamed [ 'gulp-yargs', '*' ]
+11 verbose addNamed [ null, '*' ]
+12 silly lockFile 00426f6b-gulp-yargs gulp-yargs@*
+13 verbose lock gulp-yargs@* /Users/sterling/.npm/00426f6b-gulp-yargs.lock
+14 silly addNameRange { name: 'gulp-yargs', range: '*', hasData: false }
+15 verbose mapToRegistry name gulp-yargs
+16 verbose mapToRegistry uri https://registry.npmjs.org/gulp-yargs
+17 verbose request on initialization, where is /gulp-yargs
+18 verbose request after pass 1, where is /gulp-yargs
+19 verbose request url raw /gulp-yargs
+20 verbose request resolving registry [ 'https://registry.npmjs.org/', './gulp-yargs' ]
+21 verbose request after pass 2, where is https://registry.npmjs.org/gulp-yargs
+22 verbose request no auth needed
+23 info attempt registry request try #1 at 12:25:33
+24 verbose request id e9809ff253928912
+25 http request GET https://registry.npmjs.org/gulp-yargs
+26 http 404 https://registry.npmjs.org/gulp-yargs
+27 verbose headers { date: 'Fri, 12 Dec 2014 17:25:33 GMT',
+27 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '52',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   'x-served-by': 'cache-iad2130-IAD',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1418405133.866134,VS0,VE12',
+27 verbose headers   connection: 'close' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { date: 'Fri, 12 Dec 2014 17:25:33 GMT',
+28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '52',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     'x-served-by': 'cache-iad2130-IAD',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1418405133.866134,VS0,VE12',
+28 silly registry.get     connection: 'close' } ]
+29 silly lockFile 00426f6b-gulp-yargs gulp-yargs@*
+30 silly lockFile 00426f6b-gulp-yargs gulp-yargs@*
+31 verbose stack Error: 404 Not Found: gulp-yargs
+31 verbose stack     at RegClient.<anonymous> (/Users/sterling/.nvm/v0.11.14/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:259:14)
+31 verbose stack     at Request._callback (/Users/sterling/.nvm/v0.11.14/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:198:65)
+31 verbose stack     at Request.self.callback (/Users/sterling/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:236:22)
+31 verbose stack     at Request.emit (events.js:110:17)
+31 verbose stack     at Request.<anonymous> (/Users/sterling/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+31 verbose stack     at Request.emit (events.js:129:20)
+31 verbose stack     at IncomingMessage.<anonymous> (/Users/sterling/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+31 verbose stack     at IncomingMessage.emit (events.js:129:20)
+31 verbose stack     at _stream_readable.js:907:16
+31 verbose stack     at process._tickCallback (node.js:372:11)
+32 verbose statusCode 404
+33 verbose pkgid gulp-yargs
+34 verbose cwd /Users/sterling/Desktop/dev/backbone-starter
+35 error Darwin 14.0.0
+36 error argv "/Users/sterling/.nvm/v0.11.14/bin/node" "/Users/sterling/.nvm/v0.11.14/bin/npm" "install" "gulp-yargs"
+37 error node v0.11.14
+38 error npm  v2.0.0
+39 error code E404
+40 error 404 Not Found: gulp-yargs
+40 error 404
+40 error 404 'gulp-yargs' is not in the npm registry.
+40 error 404 You should bug the author to publish it (or use the name yourself!)
+40 error 404 It was specified as a dependency of 'backbone-starter'
+40 error 404
+40 error 404 Note that you can also install from a
+40 error 404 tarball, folder, http url, or git url.
+41 verbose exit [ 1, true ]
