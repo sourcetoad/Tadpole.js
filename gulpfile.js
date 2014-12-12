@@ -6,9 +6,18 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var include = require('gulp-include');
 var htmlreplace = require('gulp-html-replace');
-var webserver = require('gulp-webserver');
 var taskListing = require('gulp-task-listing');
+var connect = require('gulp-connect');
 
+
+// Http server task
+gulp.task('server', function() {
+    connect.server({
+        root: '',
+        livereload: true,
+        port: 8080
+    });
+});
 
 
 gulp.task('install', function(){
@@ -30,13 +39,12 @@ gulp.task('jshint', function() {
 
 
 // Live Reload HTTP Server
-gulp.task('server', function() {
-    gulp.src('')
-        .pipe(webserver({
-            livereload: true,
-            directoryListing: true,
-            open: true
-        }));
+gulp.task('appServer', function() {
+    connect.server({
+        root: 'app',
+        livereload: true,
+        port: 8080
+    });
 });
 
 
@@ -92,7 +100,7 @@ gulp.task('replaceHTML', function() {
 gulp.task('default', taskListing);
 
 // Watch Task
-gulp.task('start', ['jshint', 'server']);
+gulp.task('start', ['jshint', 'appServer']);
 
 // Distribute Task
 gulp.task('distribute', ['minify', 'copyTemplates','includeLibs', 'replaceHTML']);
