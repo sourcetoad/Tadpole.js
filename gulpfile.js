@@ -10,9 +10,9 @@ var taskListing = require('gulp-task-listing');
 var connect = require('gulp-connect');
 
 var fs = require('fs');
+//var file = require('gulp-file');
 
 var args   = require('yargs').argv;
-//var gulpif = require('gulp-if');
 
 
 // Http server task
@@ -40,8 +40,15 @@ function getArg(key) {
 
 // Create View
 function createView(name) {
+    var filePath = 'app/js/views/' + name + 'View' + '.js';
+    var fileContent = "App.views." + name + " = BaseView.extend({});";
+
+
     console.log("Creating view called " + name + "...");
+
+    fs.writeFile(filePath, fileContent);
 }
+
 
 
 // Generate Task
