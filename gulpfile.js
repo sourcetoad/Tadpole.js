@@ -86,7 +86,7 @@ gulp.task("g", function(){
 
 // JSHint
 gulp.task('jshint', function() {
-    return gulp.src('app/js/app.js')
+    return gulp.src(['app/js/libs.js', 'app/js/*/*.js'])
         .pipe(include())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
