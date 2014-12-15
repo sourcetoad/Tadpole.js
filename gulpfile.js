@@ -111,9 +111,8 @@ gulp.task('appServer', function() {
 
 // Minify JS
 gulp.task('minify', function() {
-    return gulp.src(['app/js/app.js', 'app/js/index.js', 'app/js/base/*.js', 'app/js/routers/*.js', 'app/js/views/*.js'])
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('dist/js'))
+    return gulp.src('app/js/app.js')
+        .pipe(include())
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
@@ -138,7 +137,7 @@ gulp.task("includeLibs", function() {
 gulp.task('replaceHTML', function() {
     gulp.src('app/index.html')
         .pipe(htmlreplace({
-            'js': ['js/libs.js', 'js/app.js']
+            'js': ['js/app.js']
         }))
         .pipe(gulp.dest('dist/'));
 });
