@@ -13,6 +13,14 @@ var fs = require('fs');
 var args   = require('yargs').argv;
 
 
+
+function capitalizeFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
+
 // Http server task
 gulp.task('server', function() {
     connect.server({
@@ -37,73 +45,35 @@ function getArg(key) {
 }
 
 
-// Create View
-function createView(name) {
-    var filePath = 'app/js/views/' + name + 'View' + '.js';
-    var fileContent = "App.views." + name + " = BaseView.extend({});";
+// Generate File
+function generateFile(name, type, path, template) {
+    var filePath = path + name + capitalizeFirstLetter(type) + '.js';
+    var fileContent = "App." + type + "s." + name + template;
 
-
-    console.log("Creating view called " + name + "...");
-
+    console.log("Creating " + type + " called " + name + "...");
     fs.writeFile(filePath, fileContent);
 }
-
-
-// Create Router
-function createRouter(name) {
-    var filePath = 'app/js/routers/' + name + 'Router' + '.js';
-    var fileContent = "App.routers." + name + " = Backbone.Router.extend({});";
-
-
-    console.log("Creating router called " + name + "...");
-
-    fs.writeFile(filePath, fileContent);
-}
-
-
-// Create Model
-function createModel(name) {
-    var filePath = 'app/js/models/' + name + 'Model' + '.js';
-    var fileContent = "App.models." + name + " = Backbone.Model.extend({});";
-
-
-    console.log("Creating model called " + name + "...");
-
-    fs.writeFile(filePath, fileContent);
-}
-
-
-// Create Collection
-function createCollection(name) {
-    var filePath = 'app/js/collections/' + name + 'Collection' + '.js';
-    var fileContent = "App.collections." + name + " = Backbone.Collection.extend({});";
-
-
-    console.log("Creating collection called " + name + "...");
-
-    fs.writeFile(filePath, fileContent);
-}
-
 
 
 // Generate Task
 gulp.task("g", function(){
     var isView = getArg("--view");
     var isRouter = getArg("--router");
-    var isModel = getArg("--view");
+    var isModel = getArg("--model");
     var isCollection = getArg("--collection");
 
     if (isView != null) {
-        createView(isView);
+        //createView(isView);
+        generateFile(isView, "view", "app/js/views/", " = BaseView.extend({});");
     }
     if (isRouter != null) {
-        createRouter(isRouter);
+        generateFile(isRouter, "router", "app/js/routers/", " = Backbone.Router.extend({});");
     }
     if (isModel != null) {
-        createModel(isModel);
+        generateFile(isModel, "model", "app/js/models/", " = Backbone.Model.extend({});");
     }
     if (isCollection != null) {
-        createCollection(isCollection);
+        generateFile(isCollection, "collection", "app/js/collections/", " = Backbone.Collection.extend({});");
     }
 });
 
@@ -116,7 +86,8 @@ gulp.task("g", function(){
 
 // JSHint
 gulp.task('jshint', function() {
-    return gulp.src('app/js/*/*.js')
+    return gulp.src('app/js/app.js')
+        .pipe(include())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
 });
