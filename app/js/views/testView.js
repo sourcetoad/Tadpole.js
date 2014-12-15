@@ -12,7 +12,3 @@ App.views.Test = BaseView.extend({
 //        this.render();
 //    }
 });
-
-App.views.Test = BaseView.extend({
-
-});

@@ -10,8 +10,6 @@ var taskListing = require('gulp-task-listing');
 var connect = require('gulp-connect');
 
 var fs = require('fs');
-//var file = require('gulp-file');
-
 var args   = require('yargs').argv;
 
 
@@ -38,6 +36,7 @@ function getArg(key) {
     return (index < 0) ? null : (!next || next[0] === "-") ? true : next;
 }
 
+
 // Create View
 function createView(name) {
     var filePath = 'app/js/views/' + name + 'View' + '.js';
@@ -50,19 +49,63 @@ function createView(name) {
 }
 
 
+// Create Router
+function createRouter(name) {
+    var filePath = 'app/js/routers/' + name + 'Router' + '.js';
+    var fileContent = "App.routers." + name + " = Backbone.Router.extend({});";
+
+
+    console.log("Creating router called " + name + "...");
+
+    fs.writeFile(filePath, fileContent);
+}
+
+
+// Create Model
+function createModel(name) {
+    var filePath = 'app/js/models/' + name + 'Model' + '.js';
+    var fileContent = "App.models." + name + " = Backbone.Model.extend({});";
+
+
+    console.log("Creating model called " + name + "...");
+
+    fs.writeFile(filePath, fileContent);
+}
+
+
+// Create Collection
+function createCollection(name) {
+    var filePath = 'app/js/collections/' + name + 'Collection' + '.js';
+    var fileContent = "App.collections." + name + " = Backbone.Collection.extend({});";
+
+
+    console.log("Creating collection called " + name + "...");
+
+    fs.writeFile(filePath, fileContent);
+}
+
+
 
 // Generate Task
 gulp.task("g", function(){
     var isView = getArg("--view");
+    var isRouter = getArg("--router");
+    var isModel = getArg("--view");
+    var isCollection = getArg("--collection");
 
     if (isView != null) {
-        createView(getArg("--view"));
+        createView(isView);
+    }
+    if (isRouter != null) {
+        createRouter(isRouter);
+    }
+    if (isModel != null) {
+        createModel(isModel);
+    }
+    if (isCollection != null) {
+        createCollection(isCollection);
     }
 });
-
-
-
-
 
 
 
@@ -128,7 +171,6 @@ gulp.task('replaceHTML', function() {
         }))
         .pipe(gulp.dest('dist/'));
 });
-
 
 
 
