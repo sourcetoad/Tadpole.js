@@ -32,7 +32,7 @@ var BaseView = Backbone.View.extend({
         _.each(this.bindings, function(binding) {
             binding.source.unbind(binding.event, binding.callback);
         });
-        this.bindings = []
+        this.bindings = [];
     },
     leave: function() {
         this.trigger('leave');

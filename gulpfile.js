@@ -96,7 +96,7 @@ gulp.task('jshint', function() {
 // Live Reload HTTP Server
 gulp.task('appServer', function() {
     connect.server({
-        root: 'app',
+        root: '',
         livereload: true,
         port: 8080
     });
@@ -118,18 +118,30 @@ gulp.task('minify', function() {
 });
 
 
+// Include files from libs.js in dist
+gulp.task("includeLibs", function() {
+    gulp.src('app/js/libs.js')
+        .pipe( include() )
+        .pipe( gulp.dest("dist/js") )
+});
+
+
 // Copy Templates into dist
 gulp.task('copyTemplates', function() {
     gulp.src('app/templates/*.hbs')
         .pipe(gulp.dest('dist/templates/'));
 });
 
+// Copy Img into dist
+gulp.task('copyImg', function() {
+    gulp.src('app/img/*')
+        .pipe(gulp.dest('dist/img/'));
+});
 
-// Include files from libs.js in dist
-gulp.task("includeLibs", function() {
-    gulp.src('app/js/libs.js')
-        .pipe( include() )
-        .pipe( gulp.dest("dist/js") )
+// Copy CSS into dist
+gulp.task('copyCSS', function() {
+    gulp.src('app/css/*')
+        .pipe(gulp.dest('dist/css/'));
 });
 
 
@@ -156,7 +168,7 @@ gulp.task('default', taskListing);
 gulp.task('start', ['jshint', 'appServer']);
 
 // Distribute Task
-gulp.task('distribute', ['minify', 'copyTemplates','includeLibs', 'replaceHTML']);
+gulp.task('distribute', ['minify', 'copyTemplates', 'copyImg', 'copyCSS','includeLibs', 'replaceHTML']);
 
 
 
