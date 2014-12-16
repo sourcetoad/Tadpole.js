@@ -13,7 +13,6 @@ Includes the following:
 
 Included Libraries
 ================
-
 - jQuery.js
 - Underscore.js
 - Backbone.js
@@ -24,7 +23,6 @@ Included Libraries
 
 File Structure
 =================
-
 - ```App/*``` - the contents of your application
   - ```css/*```
   - ```img/*```
@@ -39,7 +37,39 @@ File Structure
   
 
 
+Gulp Commands
+=================
+- ```gulp start``` - runs a server on localhost:8080 and jshint
+- ```gulp server``` - runs a server on localhost:8080
+- ```gulp distribute``` - creates a folder called ```dist``` that contains a minified build of your ```app```
 
+
+Gulp Generators
+=================
+The generator commands are all subcommands of ```g``` which stands for ```generate```. In the examples commands below ```example``` can be replaced with the name of the view/model/etc.
+
+- ```gulp g --view example``` - creates a file called ```exampleView``` in ```app/views/exampleView.js```
+- ```gulp g --router example``` - creates a file called ```exampleRouter``` in ```app/views/exampleRouter.js```
+- ```gulp g --model example``` - creates a file called ```exampleModel``` in ```app/views/exampleModel.js```
+- ```gulp g --collection example``` - creates a file called ```exampleCollection``` in ```app/views/exampleCollection.js```
+
+
+Getting Started
+=================
+The easiest way to get started with Tadpole.js is by cloning it with git.
+
+Make sure you're in the right directory:
+```
+$ mkdir MyProject
+```
+
+```
+$ cd MyProject
+```
+Clone the repo into the current directory:
+```
+$ git clone https://github.com/sourcetoad/backbone-starter.git --bare
+```
 
 
 
