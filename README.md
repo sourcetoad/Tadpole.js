@@ -68,7 +68,7 @@ $ cd MyProject
 ```
 Clone the repo into the current directory:
 ```
-$ git clone https://github.com/sourcetoad/backbone-starter.git --bare
+$ git clone https://github.com/sourcetoad/Tadpole.js.git --bare
 ```
 
 
