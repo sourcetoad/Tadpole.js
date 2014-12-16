@@ -94,7 +94,7 @@ gulp.task('jshint', function() {
 
 
 // Live Reload HTTP Server
-gulp.task('appServer', function() {
+gulp.task('server', function() {
     connect.server({
         root: '',
         livereload: true,
@@ -165,7 +165,7 @@ gulp.task('replaceHTML', function() {
 gulp.task('default', taskListing);
 
 // Watch Task
-gulp.task('start', ['jshint', 'appServer']);
+gulp.task('start', ['jshint', 'server']);
 
 // Distribute Task
 gulp.task('distribute', ['minify', 'copyTemplates', 'copyImg', 'copyCSS','includeLibs', 'replaceHTML']);
