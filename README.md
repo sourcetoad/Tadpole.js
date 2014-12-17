@@ -13,11 +13,12 @@ Includes the following:
 
 Included Libraries
 ================
-- jQuery.js
-- Underscore.js
-- Backbone.js
+- [jQuery.js](http://jquery.com/)
+- [Underscore.js](http://underscorejs.org/)
+- [Backbone.js](http://backbonejs.org/)
 - [Async.js](https://github.com/caolan/async)
 - [Handlebars.js](http://handlebarsjs.com/) for templating
+- [Jasmine 2.1.3](https://github.com/jasmine/jasmine) for testing
 
 
 

@@ -1,4 +1,6 @@
-
+/**
+ * Created at SourceToad
+ */
 var App = {
     models: {},
     collections: {},

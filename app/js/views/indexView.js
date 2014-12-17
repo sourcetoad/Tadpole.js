@@ -1,5 +1,5 @@
 /**
- * Created by chriswillingham on 2/6/14.
+ * Created at SourceToad
  */
 App.views.Index = BaseView.extend({
     initialize: function(){
