@@ -71,6 +71,12 @@ Clone the repo into the current directory:
 ```
 $ git clone https://github.com/sourcetoad/Tadpole.js.git --bare
 ```
+Install dependencies:
+```
+$ npm install
+```
+$ bower install
+```
 
 
 
