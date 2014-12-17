@@ -1,8 +1,8 @@
 {
-  "name": "backbone-starter",
+  "name": "Tadpole.js",
   "version": "0.0.01",
   "description": "backbonejs mvc-style starter kit",
-  "main": "index.html",
+  "main": "app/index.html",
   "dependencies": {
     "gulp": "^3.8.10",
     "gulp-concat": "^2.4.2",
@@ -31,5 +31,5 @@
     "starter"
   ],
   "author": "Sourcetoad",
-  "license": "nope"
+  "license": "MIT"
 }

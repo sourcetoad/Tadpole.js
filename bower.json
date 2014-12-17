@@ -1,12 +1,13 @@
 {
-  "name": "backbone-starter",
+  "name": "Tadpole.js",
   "version": "0.0.1",
-  "homepage": "https://github.com/sourcetoad/backbone-starter",
+  "homepage": "http://tadpole.sourcetoad.com",
   "authors": [
     "Sourcetoad"
   ],
   "description": "backbonejs mvc-style starter kit",
-  "main": "src/index.html",
+  "main": "app/index.html",
+  "license": "MIT",
   "keywords": [
     "backbone.js",
     "backbone",
@@ -16,7 +17,6 @@
     "underscore",
     "jquery"
   ],
-  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",

@@ -63,7 +63,6 @@ gulp.task("g", function(){
     var isCollection = getArg("--collection");
 
     if (isView != null) {
-        //createView(isView);
         generateFile(isView, "view", "app/js/views/", " = BaseView.extend({});");
     }
     if (isRouter != null) {
