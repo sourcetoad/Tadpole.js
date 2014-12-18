@@ -69,7 +69,14 @@ $ cd MyProject
 ```
 Clone the repo into the current directory:
 ```
-$ git clone https://github.com/sourcetoad/Tadpole.js.git --bare
+$ git clone https://github.com/sourcetoad/Tadpole.js.git ./
+```
+Install required dependencies:
+```
+$ npm install
+```
+```
+$ bower install
 ```
 Install dependencies:
 ```
