@@ -1,7 +1,10 @@
-/**
+/***
  * Created at SourceToad
  */
 
+/**
+ * Base view from which all child views extend, it's methods are global.
+ */
 var BaseView = Backbone.View.extend({
     scope: {},
     template: function(){

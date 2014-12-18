@@ -1,5 +1,9 @@
+/***
+ * Created at SourceToad - SourceToad.com
+ */
+
 /**
- * Created at SourceToad
+ * The App variable organizes the applications components into corresponding objects.
  */
 var App = {
     models: {},
@@ -26,6 +30,9 @@ var App = {
             }
         ]);
     },
+    /**
+     * Loads and compiles handlebars (.hbs) templates.
+     */
     loadTemplates: function(cb){
         var self = this;
         var templateFiles = this.templates;
@@ -53,6 +60,9 @@ var App = {
             cb(null, templates);
         })
     },
+    /**
+     * Renders a new view with fadeOut and fadeIn animation on #img.
+     */
     renderView: function(view){
         if(this.currentView != null){
             console.log('leaving view');
@@ -63,6 +73,9 @@ var App = {
         this.currentView = view;
         $('#main').html(this.currentView.render().el);
     },
+    /**
+     * Loads routers.
+     */
     loadRoutes: function(){
         var self = this;
         for(var i in this.routers){
@@ -70,6 +83,10 @@ var App = {
         }
     }
 };
+
+/**
+ * Initialize the backbone application on document.ready, so all JS can go in the <head>.
+ */
 $(document).ready(function(){
     App.init();
 });

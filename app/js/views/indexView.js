@@ -1,5 +1,9 @@
-/**
+/***
  * Created at SourceToad
+ */
+
+/**
+ * Boilerplate view for the index.hbs template.
  */
 App.views.Index = BaseView.extend({
     initialize: function(){

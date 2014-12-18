@@ -2,6 +2,9 @@
  * Created at SourceToad
  */
 
+/**
+ * Route for IndexView at /.
+ */
 App.routers.index = Backbone.Router.extend({
     initialize: function(){
         console.log("Index init");

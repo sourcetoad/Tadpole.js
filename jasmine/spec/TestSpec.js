@@ -1,4 +1,6 @@
-// Jasmine test
+/**
+ * Boilerplate Jasmine test case.
+ */
 
 describe("Test case", function(){
     it("should test", function(){
