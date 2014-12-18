@@ -31,34 +31,37 @@ var App = {
         ]);
     },
     /**
-     * Loads and compiles handlebars (.hbs) templates.
+     * Downloads and compiles handlebars (.hbs) templates ONLY from the App.templates string array.
+     *
+     * @params {callback} callback - Returns an object of compiled templates.
      */
-    loadTemplates: function(cb){
+    loadTemplates: function(callback){
         var self = this;
         var templateFiles = this.templates;
         this.templates = {};
         var templateLoaders = {};
+
+        // Loop through each template and generates a list of template loading functions.
         for(var i in templateFiles){
+            // Create another scope.
             (function(){
                 var file = templateFiles[i];
-                console.log(file);
-                templateLoaders[file] = function(cb){
-                    var me = this;
-                    console.log('FILE IS', file);
+                templateLoaders[file] = function(callback2) {
+                    // Request and compile a template.
                     $.get('templates/'+file+'.hbs', function(data){
                         self.templates[file] = Handlebars.compile(data);
-                        //console.log(data);
-                        cb(null, Handlebars.compile(data));
+                        callback2(null, Handlebars.compile(data));
                     });
                 };
+                // Load compiled template into templateLoaders[i] array.
                 templateLoaders[file].file = file;
             })();
         }
+        // Pass list of template loading functions into async.parallel, returning the result.
         async.parallel(templateLoaders, function(err, data){
-            console.log('templates finished loading: ', data);
             var templates = data;
-            cb(null, templates);
-        })
+            callback(null, templates);
+        });
     },
     /**
      * Renders a new view with fadeOut and fadeIn animation on #img.
