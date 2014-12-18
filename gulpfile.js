@@ -16,27 +16,18 @@ var fs = require('fs');
 
 
 
+// ***********************
+// * Generators
+// ***********************
+
+
+/**
+ * Capitalizes the first letter of a string. This is needed for the generators.
+ */
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
-
-// Http server task
-gulp.task('server', function() {
-    connect.server({
-        root: '',
-        livereload: true,
-        port: 8080
-    });
-});
-
-
-
-
-// ***********************
-// * Generators
-// ***********************
 
 /**
  * Get the argument key (--view, --model, etc).
@@ -95,8 +86,19 @@ gulp.task("g", function(){
 
 
 // ***********************
-// * Watch
+// * Gulp Start
 // ***********************
+
+
+// Http server task
+gulp.task('server', function() {
+    connect.server({
+        root: '',
+        livereload: true,
+        port: 8080
+    });
+});
+
 
 /**
  * Runs JSHINT on app/js.
@@ -147,7 +149,6 @@ gulp.task("includeLibs", function() {
         .pipe( include() )
         .pipe( gulp.dest("dist/js") )
 });
-
 
 /**
  * Move templates (.hbs) into dist.
