@@ -37,7 +37,7 @@ var App = {
                 console.log(file);
                 templateLoaders[file] = function(cb){
                     var me = this;
-                    console.log('FILE IS',file);
+                    console.log('FILE IS', file);
                     $.get('templates/'+file+'.hbs', function(data){
                         self.templates[file] = Handlebars.compile(data);
                         //console.log(data);
