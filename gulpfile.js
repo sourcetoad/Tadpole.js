@@ -111,18 +111,6 @@ gulp.task('jshint', function() {
 });
 
 
-/**
- * Runs an HTTP server on port 8080 with the root directory.
- */
-gulp.task('server', function() {
-    connect.server({
-        root: '',
-        livereload: true,
-        port: 8080
-    });
-});
-
-
 
 
 // ***********************
