@@ -18,36 +18,33 @@ var App = {
     ],
     init: function(){
         var self = this;
-        async.series([
-            function(cb){
-                if(!(this.templates instanceof Array)){
-                    console.log('Handlebars templates have been preloaded');
-                    cb();
-                }else{
-                    self.loadTemplates(cb);
+        async.series({
+                templates: function(cb){
+                    if(!(self.templates instanceof Array)){
+                        console.log('Handlebars templates have been preloaded');
+                        cb(self.templates);
+                    }else{
+                        self.loadTemplates(self.templates, cb);
+                    }
                 }
             },
-            function(cb){
+            function(err, data){
+                self.templates = data.templates;
                 self.loadRoutes();
                 //new App.routers.index();
                 console.log("APP INIT");
                 console.log(Backbone.history.start());
             }
-        ]);
+        );
     },
     /**
      * Downloads and compiles handlebars (.hbs) templates ONLY from the App.templates string array.
      *
      * @params {callback} callback - Returns an object of compiled templates.
      */
-    loadTemplates: function(callback){
+    loadTemplates: function(templateFiles, callback){
         var self = this;
-        var templateFiles = this.templates;
         var templateLoaders = {};
-
-        this.templates = {};
-
-
         // Loop through each template and generates a list of template loading functions.
         for(var i in templateFiles){
             // Create another scope.
@@ -56,7 +53,7 @@ var App = {
                 templateLoaders[file] = function(callback2) {
                     // Request and compile a template.
                     $.get('templates/'+file+'.hbs', function(data){
-                        self.templates[file] = Handlebars.compile(data);
+                        //self.templates[file] = Handlebars.compile(data);
                         callback2(null, Handlebars.compile(data));
                     });
                 };
@@ -67,7 +64,8 @@ var App = {
         // Pass list of template loading functions into async.parallel, returning the result.
         async.parallel(templateLoaders, function(err, data){
             var templates = data;
-            callback(null, templates);
+            console.log(data);
+            callback(null, data);
         });
     },
     /**
