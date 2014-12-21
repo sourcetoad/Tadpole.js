@@ -3,7 +3,7 @@
  */
 
 /**
- * Base view from which all child views extend, it's methods are global.
+ * Base view from which all child views should extend.
  */
 var BaseView = Backbone.View.extend({
     scope: {},

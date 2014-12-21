@@ -4,6 +4,10 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var wrap = require('gulp-wrap');
+var declare = require('gulp-declare');
+var handlebars = require('gulp-handlebars');
+var inject = require('gulp-inject-string');
 var include = require('gulp-include');
 var htmlreplace = require('gulp-html-replace');
 var taskListing = require('gulp-task-listing');
@@ -122,20 +126,10 @@ gulp.task('jshint', function() {
  * Minify JS and move from app to dist.
  */
 gulp.task('minify', function() {
-    return gulp.src('app/js/app.js')
+    return gulp.src(['app/js/app.js'])
         .pipe(include())
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
-});
-
-
-/**
- * Move libraries from libs.js to dist.
- */
-gulp.task("includeLibs", function() {
-    gulp.src('app/js/libs.js')
-        .pipe( include() )
-        .pipe( gulp.dest("dist/js") )
 });
 
 /**
@@ -169,13 +163,25 @@ gulp.task('copyCSS', function() {
 gulp.task('replaceHTML', function() {
     gulp.src('app/index.html')
         .pipe(htmlreplace({
-            'js': ['js/app.js']
+            'js': ['js/app.js', 'js/templates.js']
         }))
         .pipe(gulp.dest('dist/'));
 });
 
 
-
+gulp.task('templates', function(){
+    gulp.src('app/templates/*')
+        .pipe(handlebars())
+        .pipe(wrap('Handlebars.template(<%= contents %>)'))
+        .pipe(declare({
+            root: 'App',
+            namespace: 'templates',
+            noRedeclare: false //this totally doesn't, which is really irritating
+        }))
+        .pipe(concat('templates.js'))
+        .pipe(inject.prepend('App.templates = {};\n'))//because declare refuses to REDECLARE this statement, so for not this must be here
+        .pipe(gulp.dest('dist/js'));
+});
 
 // ***********************
 // * Tasks
@@ -188,7 +194,7 @@ gulp.task('default', taskListing);
 gulp.task('start', ['jshint', 'server']);
 
 // Distribute Task
-gulp.task('distribute', ['minify', 'copyTemplates', 'copyImg', 'copyCSS','includeLibs', 'replaceHTML']);
+gulp.task('distribute', ['templates', 'minify', 'copyImg', 'copyCSS', 'replaceHTML']);
 
 
 

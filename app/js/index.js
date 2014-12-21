@@ -20,7 +20,12 @@ var App = {
         var self = this;
         async.series([
             function(cb){
-                self.loadTemplates(cb);
+                if(!(this.templates instanceof Array)){
+                    console.log('Handlebars templates have been preloaded');
+                    cb();
+                }else{
+                    self.loadTemplates(cb);
+                }
             },
             function(cb){
                 self.loadRoutes();
@@ -38,8 +43,10 @@ var App = {
     loadTemplates: function(callback){
         var self = this;
         var templateFiles = this.templates;
-        this.templates = {};
         var templateLoaders = {};
+
+        this.templates = {};
+
 
         // Loop through each template and generates a list of template loading functions.
         for(var i in templateFiles){
